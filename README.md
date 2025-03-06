@@ -99,10 +99,36 @@ Pantalla de inicio para usuario:
 ![image](https://github.com/user-attachments/assets/352e6026-ac6f-48d7-8216-191ee0b2a526)
 Pantalla de editar perfil:
 ![image](https://github.com/user-attachments/assets/b9c6a6fc-9a1c-4ed7-ba7c-8c31fdb4a863)
+
 Cambiar contraseña:
+
 ![image](https://github.com/user-attachments/assets/c400942e-8402-4787-b9af-ac986c97e488)
+
 Agregar imagen:
+
 ![image](https://github.com/user-attachments/assets/ce74d827-5497-4218-b6ad-6c5dfb53b122)
+
+Pantalla de administrador:
+![image](https://github.com/user-attachments/assets/e87264b8-5864-4dca-929b-ebd109d1286f)
+
+Panel de administración:
+![image](https://github.com/user-attachments/assets/feb6f8d8-a86a-44c8-8f41-522516c90a99)
+
+Agregar usuario desde panel:
+![image](https://github.com/user-attachments/assets/ba61a97e-dc13-44de-b2db-8c25eef272dd)
+
+Usuario agregado:
+![image](https://github.com/user-attachments/assets/8cf0a405-e7f5-4e71-af98-f09c95c655cf)
+
+Eliminar usuario "brandon":
+![image](https://github.com/user-attachments/assets/d65346f2-b3dc-4581-b973-90294fad34ef)
+
+Eliminado:
+![image](https://github.com/user-attachments/assets/5c106a79-7ce7-4897-b9f4-65837d8bbb45)
+
+
+
+
 
 
 
