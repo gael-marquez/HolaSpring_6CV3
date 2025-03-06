@@ -90,6 +90,22 @@ docker-compose up
 
 La aplicación estará disponible en `http://localhost:8080`.
 
-## 📄 Licencia
+## 📷 Capturas de pantalla y pruebas
+Registro de usuario:
+![image](https://github.com/user-attachments/assets/76276fdf-3f11-4464-98cc-93e689526130)
+Inicio de sesión:
+![image](https://github.com/user-attachments/assets/8f141733-045c-414e-8172-461f8b476c3a)
+Pantalla de inicio para usuario:
+![image](https://github.com/user-attachments/assets/352e6026-ac6f-48d7-8216-191ee0b2a526)
+Pantalla de editar perfil:
+![image](https://github.com/user-attachments/assets/b9c6a6fc-9a1c-4ed7-ba7c-8c31fdb4a863)
+Cambiar contraseña:
+![image](https://github.com/user-attachments/assets/c400942e-8402-4787-b9af-ac986c97e488)
+Agregar imagen:
+![image](https://github.com/user-attachments/assets/ce74d827-5497-4218-b6ad-6c5dfb53b122)
 
-Este proyecto está licenciado bajo la Licencia MIT. Ver el archivo [LICENSE](LICENSE) para más detalles.
+
+
+
+
+
