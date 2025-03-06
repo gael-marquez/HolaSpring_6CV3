@@ -126,6 +126,17 @@ Eliminar usuario "brandon":
 Eliminado:
 ![image](https://github.com/user-attachments/assets/5c106a79-7ce7-4897-b9f4-65837d8bbb45)
 
+Pruebas API get users:
+![image](https://github.com/user-attachments/assets/96ab0b91-b244-485d-8d8a-7d7f413eb18a)
+
+Pruebas API register:
+
+Pruebas API login:
+
+Pruebas API delete:
+
+
+
 
 
 
