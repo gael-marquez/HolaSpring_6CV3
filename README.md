@@ -130,10 +130,14 @@ Pruebas API get users:
 ![image](https://github.com/user-attachments/assets/96ab0b91-b244-485d-8d8a-7d7f413eb18a)
 
 Pruebas API register:
+![image](https://github.com/user-attachments/assets/7a7f8f02-905d-4fb4-aeb5-a2e8439cdfb3)
 
 Pruebas API login:
+![image](https://github.com/user-attachments/assets/143c35fe-3aaf-4d66-9cbf-a6e2532a0a9b)
 
 Pruebas API delete:
+![image](https://github.com/user-attachments/assets/e827348a-89e9-4b12-bc4f-baaa634351bf)
+
 
 
 
