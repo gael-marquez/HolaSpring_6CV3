@@ -1,107 +1,866 @@
-/* General Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+:root {
+    --background-color: #4a4a4a;
+    --text-color: #ffffff;
+    --header-color: #ffcc00;
+    --button-background: #ffcc00;
+    --button-text: #333333;
+    --form-background: #444;
+    --form-text: #ffffff;
+}
+
+/* Modo claro */
+:root.light-mode {
+    --background-color: #ffffff;
+    --text-color: #333333;
+    --header-color: #f1c40f;
+    --button-background: #f1c40f;
+    --button-text: #ffffff;
+    --form-background: #f5f5f5;
+    --form-text: #333333;
 }
 
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f9;
-    background-image: url('/static/images/background.jpg'); /* Puedes agregar tu fondo aquí */
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
 }
 
-h1 {
-    text-align: center;
-    color: #fff;
-    margin-bottom: 20px;
-}
-
-/* Container for centering content */
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+.header {
+    background-color: var(--header-color);
+    color: var(--text-color);
     width: 100%;
+    padding: 1rem 0;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    position: fixed; /* Fija el header en la parte superior */
+    top: 0;
+    left: 0;
+    z-index: 1000;
 }
 
-/* Form Styles */
-.form-container {
-    background-color: rgba(0, 0, 0, 0.7); /* Fondo translúcido */
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+.main-content {
     display: flex;
-    flex-direction: column;
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    min-height: 100vh; /* Asegurar que ocupe toda la altura de la ventana */
+    padding-top: 5rem; /* Espacio para el header */
+}
+
+.container {
+    background-color: var(--form-background);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-top: 3rem;
+    width: 80%;
+    max-width: 1200px;
+    margin: 3rem auto;
+}
+
+.search-section {
+    background-color: var(--form-background);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.search-title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #ffcc00;
+}
+
+.search-form {
+    display: flex;
+    flex-wrap: wrap;
     gap: 15px;
-    width: 350px;
-    max-width: 100%;
-    color: white;
 }
 
-label {
-    font-size: 14px;
-    color: #fff;
+.form-group {
+    flex: 1;
+    min-width: 200px;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"] {
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #ffcc00;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
     padding: 10px;
-    border: none;
+    border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 16px;
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.2);
-    color: white;
 }
 
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="password"]:focus {
-    outline: none;
-    border: 2px solid #4CAF50; /* Resaltar con color verde */
-}
-
-button {
-    padding: 12px;
-    background-color: #4CAF50;
-    color: white;
+.search-button {
+    background-color: #ffcc00;
+    color: var(--form-text);
     border: none;
     border-radius: 4px;
+    padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s;
+    margin-top: 24px;
+    height: 42px;
 }
 
-button:hover {
-    background-color: #45a049;
+.search-button:hover {
+    background-color: #e6b800;
 }
 
-/* Link Styles */
-a {
-    color: #4CAF50;
-    text-decoration: none;
+.results-section {
+    margin-top: 30px;
+}
+
+.results-title {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: #ffcc00;
+}
+
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.movie-card {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    color: #333;
+}
+
+.movie-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.movie-poster {
+    height: 300px;
+    background-color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.movie-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.movie-info {
+    padding: 15px;
+}
+
+.movie-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.movie-year {
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 12px;
+}
+
+.movie-description {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.5;
+    max-height: 4.5em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.movie-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.movie-button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.book-card {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    color: #333;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.book-cover {
+    height: 300px;
+    background-color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.book-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.book-info {
+    padding: 15px;
+}
+
+.book-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.book-author {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.book-year {
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 12px;
+}
+
+.book-description {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.5;
+    max-height: 4.5em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.book-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.book-button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.details-button {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.details-button:hover {
+    background-color: #e0e0e0;
+}
+
+.recommend-button {
+    background-color: #ffcc00;
+    color: white;
+}
+
+.recommend-button:hover {
+    background-color: #ffcc00;
+}
+
+
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    gap: 5px;
+}
+
+.pagination-button {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    background-color: white;
+    color: #333;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.pagination-button:hover {
+    background-color: #f5f5f5;
+}
+
+.pagination-button.active {
+    background-color: #ffcc00;
+    color: white;
+    border-color: #ffcc00;
+}
+
+.no-results {
     text-align: center;
-    display: block;
-    margin-top: 10px;
+    padding: 30px;
+    color: #000000;
+    display: none;
 }
 
-a:hover {
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.back-button {
+    background-color: #f5f5f5;
+    color: #333;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.back-button:hover {
+    background-color: #e0e0e0;
+}
+
+.loading {
+    text-align: center;
+    padding: 20px;
+    display: none;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto;
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #ffcc00;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+    text-align: center;
+}
+.container h1 {
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+.welcome-message {
+    color: #fff;
+    margin-bottom: 2rem;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.menu-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.menu-button {
+    background-color: var(--form-background);
+    color: var(--form-text);
+    border: none;
+    border-radius: 8px;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.menu-button:hover {
+    background-color: var(--form-background);
+    color: var(--form-text);
+    transform: scale(1.05);
+}
+
+.logout {
+    margin: 2rem auto; /* Centrar horizontalmente */
+    padding: 0.75rem 2rem;
+    background-color: var(--form-background);
+    color: var(--form-text);
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    text-decoration: none;
+    display: block; /* Cambiar a bloque para que el margin auto funcione */
+    transition: background 0.3s, transform 0.2s;
+    text-align: center;
+}
+
+.logout:hover {
+    background-color: var(--form-background);
+    transform: scale(1.05);
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-direction: column;
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: #757575;
+    position: relative;
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-image-upload {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: #3f51b5;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.profile-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0.5rem 0;
+}
+
+.profile-email {
+    color: #666;
+    margin: 0;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #555;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    background-color: var(--form-background);
+    color: var(--form-text);
+}
+
+.btn-primary {
+    background-color: #ffcc00;
+    color: #333;
+}
+
+.btn-primary:hover {
+    background-color: #e6b800;
+    transform: scale(1.05);
+}
+
+.btn-secondary {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.btn-secondary:hover {
+    background-color: #e0e0e0;
+}
+
+.mensaje {
+    padding: 12px;
+    border-radius: 4px;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.mensaje-exito {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #c8e6c9;
+}
+
+.mensaje-error {
+    background-color: #ffebee;
+    color: #c62828;
+    border: 1px solid #ffcdd2;
+}
+
+.hidden {
+    display: none;
+}
+
+.tabs {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-right: 10px;
+}
+
+.tab.active {
+    border-bottom: 2px solid #ffcc00;
+    color: #ffcc00;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.form-container {
+    background-color: var(--form-background);
+    color: var(--form-text);
+    padding: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    margin: 0 auto; /* Centrar horizontalmente */
+}
+
+.form-container h1 {
+    margin-bottom: 1.5rem;
+    color: #f1c40f; /* Amarillo */
+}
+
+.form-floating .form-control {
+    background-color: rgba(245, 245, 245, 0.7); /* Gris claro */
+    color: #333333; /* Gris oscuro */
+    border: 1px solid #d1d1d1; /* Gris claro para el borde */
+}
+
+.form-floating .form-control:focus {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-color: #f1c40f; /* Amarillo */
+    color: #333333;
+}
+
+.btn-register {
+    background-color: #f1c40f; /* Amarillo */
+    border: none;
+    width: 100%;
+    padding: 0.75rem;
+    color: #333333;
+}
+
+.btn-register:hover {
+    background-color: #d1d1d1; /* Gris claro al pasar el mouse */
+    color: #333333;
+}
+
+.login-link {
+    margin-top: 1rem;
+    color: #d1d1d1; /* Gris oscuro */
+}
+
+.login-link a {
+    color: #d1d1d1;
+    text-decoration: none;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+    color: #f1c40f; /* Amarillo al pasar el mouse */
+}
+
+p {
+    color: #333333; /* Gris oscuro */
+}
+
+.success-container {
+    background: rgba(255, 255, 255, 0.85); /* Fondo blanco con transparencia */
+    padding: 2rem;
+    border-radius: 10px;
+    color: #333333; /* Gris oscuro para el texto */
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.success-container h1 {
+    margin-bottom: 1.5rem;
+    color: #f1c40f; /* Amarillo */
+}
+
+.btn-login {
+    background-color: #f1c40f; /* Amarillo */
+    border: none;
+    width: 100%;
+    padding: 0.75rem;
+    color: #333333;
+}
+
+.btn-login:hover {
+    background-color: #d1d1d1; /* Gris claro al pasar el mouse */
+    color: #333333;
+}
+
+
+.admin-container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    color: white;
+}
+
+table {
+    width: 100%;
+    margin-top: 1rem;
+    color: white;
+}
+
+table, th, td {
+    border: 1px solid #f1c40f;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+.btn-action {
+    background-color: #e74c3c;
+    border: none;
+    padding: 0.5rem;
+    color: white;
+}
+
+.btn-action:hover {
+    background-color: #f1c40f;
+    color: #3a3a3a;
+}
+
+.btn-add {
+    background-color: #f1c40f;
+    border: none;
+    padding: 0.5rem;
+    color: #3a3a3a;
+    width: 100%;
+    font-weight: bold;
+}
+
+.btn-add:hover {
+    background-color: white;
+    color: #f1c40f;
+}
+
+.register-link {
+    margin-top: 1rem;
+    color: #d1d1d1;
+}
+
+.register-link a {
+    color: #d1d1d1;
+    text-decoration: none;
+}
+
+.register-link a:hover {
     text-decoration: underline;
 }
 
-/* Responsive Design */
-@media (max-width: 600px) {
-    .form-container {
-        width: 100%;
-        padding: 20px;
-    }
+.checkbox label {
+    color: #333333;
+}
+
+
+/* Botones */
+.menu-button, .logout, .btn {
+    background-color: var(--button-background); /* Fondo del botón */
+    color: var(--button-text); /* Texto del botón */
+    border: 2px solid var(--button-background); /* Borde del botón */
+    border-radius: 8px;
+    padding: 0.75rem 2rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, color 0.3s;
+    text-align: center;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.menu-button:hover, .logout:hover, .btn:hover {
+    background-color: var(--text-color); /* Contraste al pasar el mouse */
+    color: var(--background-color); /* Texto invertido */
+    border-color: var(--text-color); /* Borde invertido */
+    transform: scale(1.05); /* Efecto de escala */
+}
+
+/* Botones secundarios */
+.btn-secondary {
+    background-color: var(--form-background);
+    color: var(--text-color);
+    border: 2px solid var(--text-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--text-color);
+    color: var(--background-color);
+}
+
+/* Botones de acción */
+.btn-action {
+    background-color: #e74c3c; /* Rojo */
+    color: white;
+    border: 2px solid #e74c3c;
+}
+
+.btn-action:hover {
+    background-color: #f1c40f; /* Amarillo */
+    color: #3a3a3a;
+    border-color: #f1c40f;
+}
+
+/* Mensajes */
+.welcome-message {
+    color: var(--text-color); /* Cambia según el modo */
+    margin-bottom: 2rem;
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Mensajes de éxito */
+.mensaje-exito {
+    background-color: #e8f5e9; /* Verde claro */
+    color: #2e7d32; /* Verde oscuro */
+    border: 1px solid #c8e6c9;
+}
+
+/* Mensajes de error */
+.mensaje-error {
+    background-color: #ffebee; /* Rojo claro */
+    color: #c62828; /* Rojo oscuro */
+    border: 1px solid #ffcdd2;
+}
+
+.theme-toggle-button {
+    position: fixed; /* Fija el botón en la esquina superior derecha */
+    top: 10px;
+    right: 10px;
+    background-color: var(--background-color); /* Fondo del botón */
+    color: var(--text-color); /* Texto del botón */
+    border: 2px solid var(--background-color); /* Borde del botón */
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+    transition: background-color 0.3s, transform 0.2s, color 0.3s;
+}
+
+.theme-toggle-button:hover {
+    background-color: var(--text-color); /* Invertir colores al pasar el mouse */
+    color: var(--background-color); /* Texto invertido */
+    border-color: var(--text-color); /* Borde invertido */
+    transform: scale(1.05); /* Efecto de escala */
 }
