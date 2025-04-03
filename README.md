@@ -43,7 +43,7 @@ docker run -p 8080:8080 holaspring
 
 ## Pruebas de uso
 - Modo obscuro:
-![image](ht.tps://github.com/user-attachments/assets/832e783b-f70e-46f7-8a7c-5e4dfe5f92be)
+![image](https://github.com/user-attachments/assets/74a9d923-fdeb-4c44-af0c-3a7444be38d5)
 ![image](https://github.com/user-attachments/assets/6a6d9811-6ad6-455e-8674-5e9d8f1a96d9)
 ![image](https://github.com/user-attachments/assets/a7c5a2b8-ad29-4a90-8c65-fdd8004eb835)
 
