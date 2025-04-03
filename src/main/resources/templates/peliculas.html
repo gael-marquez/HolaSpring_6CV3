@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Búsqueda de Películas</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Búsqueda de peliculas</h1>
+    </header>
+    <button id="toggle-theme" class="theme-toggle-button">
+        Modo <span id="theme-icon">🌙</span> 
+    </button>
+    <div class="main-content">
+        <div class="container">
+        <div class="search-section">
+            <h2 class="search-title">Buscar Películas</h2>
+            <div class="search-form">
+                <div class="form-group">
+                    <label for="title">Título</label>
+                    <input type="text" id="title" placeholder="Ej: Inception">
+                </div>
+                <div class="form-group">
+                    <label for="type">Categoría</label>
+                    <select id="type">
+                        <option value="">Todas las categorías</option>
+                        <option value="movie">Película</option>
+                        <option value="series">Serie</option>
+                        <option value="episode">Episodio</option>
+                    </select>
+                </div>
+                <button id="searchButton" class="search-button">Buscar</button>
+            </div>
+        </div>
+        
+        <div id="loading" class="loading">
+            <div class="loading-spinner"></div>
+            <p>Buscando películas...</p>
+        </div>
+        
+        <div id="resultsSection" class="results-section" style="display: none;">
+            <h2 class="results-title">Resultados de la búsqueda</h2>
+            <div id="movieGrid" class="movie-grid">
+                <!-- Los resultados de búsqueda se mostrarán aquí -->
+            </div>
+            
+            <div id="pagination" class="pagination">
+                <!-- La paginación se generará dinámicamente -->
+            </div>
+        </div>
+        
+        <div id="noResults" class="no-results">
+            <h3>No se encontraron resultados para tu búsqueda.</h3>
+            <p>Intenta con otros términos o criterios de búsqueda.</p>
+        </div>
+        
+        <div class="navigation-buttons">
+            <a href="/home" class="back-button">Volver al inicio</a>
+        </div>
+    </div>
+    </div>
+    
+    <script>
+        document.getElementById('searchButton').addEventListener('click', function() {
+            const query = document.getElementById('title').value;
+            const type = document.getElementById('type').value;
+            searchMovies(query, type);
+        });
+
+        async function searchMovies(query, type) {
+            const apiKey = '6dbf9233'; // Reemplaza con tu API key de OMDB
+            let url = `https://www.omdbapi.com/?s=${query}&apikey=${apiKey}`;
+            if (type) {
+                url += `&type=${type}`;
+            }
+
+            try {
+                document.getElementById('loading').style.display = 'block';
+                document.getElementById('resultsSection').style.display = 'none';
+                document.getElementById('noResults').style.display = 'none';
+                
+                const response = await fetch(url);
+                const data = await response.json();
+
+                document.getElementById('loading').style.display = 'none';
+                
+                if (data.Response === "True") {
+                    displayResults(data.Search);
+                } else {
+                    displayError(data.Error);
+                }
+            } catch (error) {
+                console.error('Error al buscar películas:', error);
+                document.getElementById('loading').style.display = 'none';
+                displayError('Error al buscar películas');
+            }
+        }
+
+        function displayResults(movies) {
+            const results = document.getElementById('movieGrid');
+            results.innerHTML = '';
+
+            movies.forEach(movie => {
+                const movieElement = document.createElement('div');
+                movieElement.classList.add('movie-card');
+                movieElement.innerHTML = `
+                    <div class="movie-poster">
+                        <img src="${movie.Poster !== 'N/A' ? movie.Poster : 'placeholder.jpg'}" alt="${movie.Title}">
+                    </div>
+                    <div class="movie-info">
+                        <h3 class="movie-title">${movie.Title}</h3>
+                        <p class="movie-year">Año: ${movie.Year}</p>
+                        <div class="movie-actions">
+                            <button class="movie-button details-button" onclick="window.open('https://www.imdb.com/title/${movie.imdbID}', '_blank')">Ver detalles</button>
+                            <button class="movie-button recommend-button" onclick="alert('Película recomendada: ${movie.Title}')">Recomendar</button>
+                        </div>
+                    </div>
+                `;
+                results.appendChild(movieElement);
+            });
+
+            document.getElementById('resultsSection').style.display = 'block';
+        }
+
+        function displayError(error) {
+            const noResults = document.getElementById('noResults');
+            noResults.innerHTML = `<h3>${error}</h3><p>Intenta con otros términos o criterios de búsqueda.</p>`;
+            noResults.style.display = 'block';
+        }
+    </script>
+    <script src="/theme-toggle.js"></script>
+
+</body>
+</html>
