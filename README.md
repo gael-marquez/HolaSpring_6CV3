@@ -41,5 +41,18 @@ docker run -p 8080:8080 holaspring
 - Asegúrate de tener configurado el entorno de desarrollo con Java y Maven antes de ejecutar el proyecto.
 - Puedes utilizar Docker para ejecutar el proyecto en un contenedor y evitar problemas de configuración en tu máquina local.
 
+## Pruebas de uso
+- Modo obscuro:
+![image](ht.tps://github.com/user-attachments/assets/832e783b-f70e-46f7-8a7c-5e4dfe5f92be)
+![image](https://github.com/user-attachments/assets/6a6d9811-6ad6-455e-8674-5e9d8f1a96d9)
+![image](https://github.com/user-attachments/assets/a7c5a2b8-ad29-4a90-8c65-fdd8004eb835)
+
+
+-Modo claro:
+![image](https://github.com/user-attachments/assets/10b1366a-83ce-44a2-9260-f7f7ec3767f0)
+![image](https://github.com/user-attachments/assets/9e1642c9-36cc-4d94-a017-6e096aaa702b)
+![image](https://github.com/user-attachments/assets/d1a12535-c6b7-4293-8f24-3d777903ed02)
+
+
 ## Autor ✍️
 Gael Alejandro Marquez Rodriguez
