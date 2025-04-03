@@ -53,6 +53,9 @@ docker run -p 8080:8080 holaspring
 ![image](https://github.com/user-attachments/assets/9e1642c9-36cc-4d94-a017-6e096aaa702b)
 ![image](https://github.com/user-attachments/assets/d1a12535-c6b7-4293-8f24-3d777903ed02)
 
+-Admin:
+![image](https://github.com/user-attachments/assets/1fbe8538-d23a-4a04-acc6-8cb2c9c7e73a)
+![image](https://github.com/user-attachments/assets/637cf468-fa46-422c-ac4d-379a28eaf1f7)
 
 ## Autor ✍️
 Gael Alejandro Marquez Rodriguez
