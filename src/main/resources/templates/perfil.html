@@ -4,212 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Perfil</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #4a4a4a;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            color: #fff;
-        }
-    
-        .header {
-            background-color: #ffcc00;
-            color: #333;
-            width: 100%;
-            padding: 1rem 0;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        }
-    
-        .container {
-            background-color: #666;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            padding: 2rem;
-            margin-top: 3rem;
-            width: 80%;
-            max-width: 600px;
-            text-align: center;
-        }
-    
-        h1, h2 {
-            text-align: center;
-            color: #ffffff;
-        }
-    
-        .profile-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 2rem;
-            flex-direction: column;
-        }
-    
-        .profile-image {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin-bottom: 1rem;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            background-color: #e0e0e0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: #757575;
-            position: relative;
-        }
-    
-        .profile-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    
-        .profile-image-upload {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            background-color: #3f51b5;
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 1.5rem;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-        }
-    
-        .profile-name {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin: 0.5rem 0;
-        }
-    
-        .profile-email {
-            color: #666;
-            margin: 0;
-        }
-    
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-    
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: #555;
-        }
-    
-        .form-group input {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1rem;
-        }
-    
-        .buttons {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 2rem;
-        }
-    
-        .btn {
-            padding: 12px 20px;
-            border: none;
-            border-radius: 4px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-    
-        .btn-primary {
-            background-color: #ffcc00;
-            color: #333;
-        }
-    
-        .btn-primary:hover {
-            background-color: #e6b800;
-            transform: scale(1.05);
-        }
-    
-        .btn-secondary {
-            background-color: #f5f5f5;
-            color: #333;
-        }
-    
-        .btn-secondary:hover {
-            background-color: #e0e0e0;
-        }
-    
-        .mensaje {
-            padding: 12px;
-            border-radius: 4px;
-            margin-top: 1rem;
-            text-align: center;
-        }
-    
-        .mensaje-exito {
-            background-color: #e8f5e9;
-            color: #2e7d32;
-            border: 1px solid #c8e6c9;
-        }
-    
-        .mensaje-error {
-            background-color: #ffebee;
-            color: #c62828;
-            border: 1px solid #ffcdd2;
-        }
-    
-        .hidden {
-            display: none;
-        }
-    
-        .tabs {
-            display: flex;
-            margin-bottom: 20px;
-            border-bottom: 1px solid #ddd;
-        }
-    
-        .tab {
-            padding: 10px 20px;
-            cursor: pointer;
-            border-bottom: 2px solid transparent;
-            margin-right: 10px;
-        }
-    
-        .tab.active {
-            border-bottom: 2px solid #ffcc00;
-            color: #ffcc00;
-        }
-    
-        .tab-content {
-            display: none;
-        }
-    
-        .tab-content.active {
-            display: block;
-        }
-    </style>
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-    <div class="header">
+    <header class="header">
         <h1>Sistema de Recomendaciones</h1>
-    </div>
-    
-    <div class="container">
+    </header>
+    <div class="main-content">
+        <div class="form-container">
         <h2>Mi Perfil</h2>
-        
+        <button id="toggle-theme" class="theme-toggle-button">
+            Modo <span id="theme-icon">🌙</span> 
+        </button>
         <div class="profile-header">
             <div class="profile-image">
                 <!-- Si el usuario tiene imagen, mostrarla -->
@@ -275,6 +81,7 @@
         <div th:if="${mensaje}" class="mensaje" th:classappend="${tipoMensaje == 'error'} ? 'mensaje-error' : 'mensaje-exito'" th:text="${mensaje}">
         </div>
     </div>
+    </div>
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -326,5 +133,7 @@
             });
         });
     </script>
+    <script src="/theme-toggle.js"></script>
+
 </body>
 </html>
