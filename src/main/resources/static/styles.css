@@ -864,3 +864,16 @@ th, td {
     border-color: var(--text-color); /* Borde invertido */
     transform: scale(1.05); /* Efecto de escala */
 }
+
+.favorite-button {
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.favorite-button:hover {
+    background-color: #ff1493;
+}

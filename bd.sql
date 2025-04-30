@@ -1,4 +1,4 @@
--- Active: 1740272039236@@127.0.0.1@3306
+-- Active: 1745890079706@@127.0.0.1@3306@tarea2
 
 
 
@@ -23,6 +23,15 @@ CREATE TABLE usuario_roles (
     PRIMARY KEY (usuario_id, rol_id),
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
     FOREIGN KEY (rol_id) REFERENCES roles(id)
+);
+
+DROP TABLE IF EXISTS favorites;
+CREATE TABLE favorites (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    user_id BIGINT NOT NULL,
+    movie_id VARCHAR(20) NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES usuarios(id),
+    UNIQUE (user_id, movie_id)
 );
 
 INSERT INTO roles (nombre) VALUES ('ROLE_ADMIN'), ('ROLE_USER');
@@ -54,3 +63,5 @@ SELECT id FROM roles WHERE nombre = 'ROLE_ADMIN';
 INSERT INTO usuario_roles (usuario_id, rol_id) 
 VALUES ((SELECT id FROM usuarios WHERE email = 'admin@gmail.com'), 
         (SELECT id FROM roles WHERE nombre = 'ROLE_ADMIN'));
+
+select * from favorites;

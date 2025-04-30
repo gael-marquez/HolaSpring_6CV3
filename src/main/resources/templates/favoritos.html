@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Mis Películas Favoritas</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Mis Películas Favoritas</h1>
+            <button id="toggle-theme" class="theme-toggle-button">
+                Modo <span id="theme-icon">🌙</span>
+            </button>
+        </header>
+        
+        <div id="noFavorites" class="no-favorites" th:style="'display:' + (${#lists.isEmpty(favorites)} ? 'block' : 'none')">
+            <p>No tienes películas favoritas aún.</p>
+        </div>
+        
+        <div id="favoritesGrid" class="movie-grid"></div>
+        
+        <div class="navigation">
+            <a href="/peliculas" class="back-button">Volver a películas</a>
+        </div>
+    </div>
+    <script th:inline="javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+            /*<![CDATA[*/
+            const favorites = /*[[${favorites}]]*/ [];
+            /*]]>*/
+            console.log("Favoritos cargados:", favorites);
+    
+            const apiKey = '6dbf9233';
+            const grid = document.getElementById('favoritesGrid');
+            const noFavDiv = document.getElementById('noFavorites');
+
+            if (!noFavDiv) {
+                console.error("El elemento noFavorites no fue encontrado en el DOM.");
+                return;
+            }
+
+            if (favorites.length === 0) {
+                noFavDiv.style.display = 'block';
+            } else {
+                noFavDiv.style.display = 'none';
+                favorites.forEach(favorite => {
+                    console.log("Procesando favorito:", favorite);
+                    fetch(`https://www.omdbapi.com/?i=${favorite.movieId}&apikey=${apiKey}`)
+                        .then(res => res.json())
+                        .then(movie => {
+                            const movieElement = document.createElement('div');
+                            movieElement.classList.add('movie-card');
+                            movieElement.innerHTML = `
+                                <div class="movie-poster">
+                                    <img src="${movie.Poster !== 'N/A' ? movie.Poster : 'placeholder.jpg'}" alt="${movie.Title}">
+                                </div>
+                                <div class="movie-info">
+                                    <h3 class="movie-title">${movie.Title}</h3>
+                                    <p class="movie-year">Año: ${movie.Year}</p>
+                                    <a href="https://www.imdb.com/title/${movie.imdbID}" target="_blank" class="movie-button">Ver en IMDB</a>
+                                </div>
+                            `;
+                            grid.appendChild(movieElement);
+                        })
+                        .catch(error => console.error('Error al cargar película:', error));
+                });
+            }
+
+            // Modo oscuro
+            const toggleThemeButton = document.getElementById('toggle-theme');
+            const themeIcon = document.getElementById('theme-icon');
+            const currentTheme = localStorage.getItem('theme') || 'light';
+
+            if (currentTheme === 'dark') {
+                document.body.classList.add('dark-theme');
+                themeIcon.textContent = '☀️';
+            }
+
+            toggleThemeButton.addEventListener('click', () => {
+                document.body.classList.toggle('dark-theme');
+                const isDark = document.body.classList.contains('dark-theme');
+                themeIcon.textContent = isDark ? '☀️' : '🌙';
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            });
+        });
+    </script>
+    <script src="/theme-toggle.js"></script>
+</body>
+</html>
